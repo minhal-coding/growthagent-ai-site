@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, Menu, Sparkles } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { DottedSurface } from "@/components/ui/dotted-surface";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const nav = [
   { label: "Product", href: "/#product" },
@@ -178,9 +179,15 @@ export function Pill({
 
 export function ColorBand({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("rounded-[2rem] border border-white/10 bg-white/[0.06] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl", className)}>
+    <SpotlightCard
+      glowColor="purple"
+      className={cn(
+        "rounded-[2rem] border border-white/10 bg-white/[0.06] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl",
+        className,
+      )}
+    >
       {children}
-    </div>
+    </SpotlightCard>
   );
 }
 

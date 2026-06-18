@@ -224,6 +224,78 @@
   .growthagent-dark header {
     color-scheme: dark;
   }
+
+  [data-glow-card] {
+    --spotlight-size: 280px;
+    --hue: calc(var(--base, 276) + (var(--xp, 0.5) * var(--spread, 220)));
+    isolation: isolate;
+    background-image:
+      radial-gradient(
+        var(--spotlight-size) var(--spotlight-size) at calc(var(--x, -9999) * 1px) calc(var(--y, -9999) * 1px),
+        hsl(var(--hue) 100% 68% / 0.12),
+        transparent 64%
+      );
+    background-attachment: fixed;
+  }
+
+  [data-glow-card]::before,
+  [data-glow-card]::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: -1px;
+    z-index: 2;
+    border-radius: inherit;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    padding: 1px;
+    -webkit-mask:
+      linear-gradient(#000, #000) content-box,
+      linear-gradient(#000, #000);
+    mask:
+      linear-gradient(#000, #000) content-box,
+      linear-gradient(#000, #000);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  [data-glow-card]::before {
+    background-image:
+      radial-gradient(
+        calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at calc(var(--x, -9999) * 1px) calc(var(--y, -9999) * 1px),
+        hsl(var(--hue) 100% 70% / 0.95),
+        transparent 70%
+      ),
+      linear-gradient(135deg, rgba(97, 97, 255, 0.28), rgba(0, 200, 117, 0.16), rgba(255, 255, 255, 0.08));
+  }
+
+  [data-glow-card]::after {
+    background-image:
+      radial-gradient(
+        calc(var(--spotlight-size) * 0.38) calc(var(--spotlight-size) * 0.38) at calc(var(--x, -9999) * 1px) calc(var(--y, -9999) * 1px),
+        rgba(255, 255, 255, 0.85),
+        transparent 65%
+      );
+    opacity: 0.5;
+  }
+
+  [data-glow-card] > [data-glow-card-aura] {
+    pointer-events: none;
+    position: absolute;
+    inset: -2rem;
+    z-index: -1;
+    border-radius: inherit;
+    background:
+      radial-gradient(
+        360px 260px at calc(var(--x, -9999) * 1px) calc(var(--y, -9999) * 1px),
+        hsl(var(--hue) 100% 58% / 0.16),
+        transparent 70%
+      );
+    background-attachment: fixed;
+    filter: blur(24px);
+    opacity: 0.9;
+  }
 }
 
 @property --trail-angle {
