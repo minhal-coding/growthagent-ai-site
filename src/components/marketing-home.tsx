@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, Play, Plus, Star } from "lucide-react";
 
@@ -191,7 +192,7 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section className="px-5 py-20 sm:px-6 lg:px-8">
+        <section id="use-cases" className="px-5 py-20 sm:px-6 lg:px-8">
           <ColorBand className="mx-auto grid max-w-7xl items-center gap-10 bg-[#f6f3ff] lg:grid-cols-[1fr_1.05fr]">
             <div className="grid gap-3">
               {["Define target", "Research leads", "Enrich data", "Generate outreach", "Track replies", "Book meetings"].map((step, index) => (
@@ -268,7 +269,7 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section className="px-5 py-20 sm:px-6 lg:px-8">
+        <section id="security" className="px-5 py-20 sm:px-6 lg:px-8">
           <ColorBand className="mx-auto max-w-7xl bg-[#ecfeff]">
             <SectionIntro eyebrow="How it works" title="From target market to booked conversations." text="Start with a target audience. The agent team does the operational work and asks for approval when it should." />
             <div className="mt-12 grid gap-4 md:grid-cols-5">
@@ -376,7 +377,7 @@ export function MarketingHome() {
 
 export function TestimonialsBlock() {
   return (
-    <section className="px-5 py-20 sm:px-6 lg:px-8">
+    <section id="faq" className="px-5 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
           <SectionIntro
@@ -459,10 +460,11 @@ export function TestimonialsBlock() {
 }
 
 export function PricingBlock() {
+  const [yearly, setYearly] = useState(false);
   const plans = [
-    ["Starter", "$99", "For solo founders testing agentic outbound.", ["1 workspace", "500 researched leads", "Human approval", "Basic analytics"]],
-    ["Growth", "$299", "For teams running weekly campaigns.", ["5 users", "5,000 researched leads", "Reply capture", "Meeting workflow"]],
-    ["Enterprise", "Custom", "For companies needing controls and integrations.", ["SSO", "Dedicated workspace", "CRM integrations", "Custom compliance"]],
+    ["Starter", "$99", "$79", "For solo founders testing agentic outbound.", ["1 workspace", "500 researched leads", "Human approval", "Basic analytics"]],
+    ["Growth", "$299", "$239", "For teams running weekly campaigns.", ["5 users", "5,000 researched leads", "Reply capture", "Meeting workflow"]],
+    ["Enterprise", "Custom", "Custom", "For companies needing controls and integrations.", ["SSO", "Dedicated workspace", "CRM integrations", "Custom compliance"]],
   ];
 
   return (
@@ -471,8 +473,20 @@ export function PricingBlock() {
         <SectionIntro eyebrow="Pricing" title="Pricing that grows with your pipeline." text="Start small, prove the workflow, then scale into a full sales automation layer." />
         <div className="mt-6 flex justify-center">
           <div className="rounded-full border border-slate-200 bg-white p-1 shadow-sm">
-            <button className="rounded-full bg-slate-950 px-5 py-2 text-sm font-black text-white">Monthly</button>
-            <button className="px-5 py-2 text-sm font-black text-slate-500">Yearly</button>
+            <button
+              type="button"
+              onClick={() => setYearly(false)}
+              className={cn("rounded-full px-5 py-2 text-sm font-black transition", !yearly ? "bg-slate-950 text-white" : "text-slate-500 hover:text-slate-950")}
+            >
+              Monthly
+            </button>
+            <button
+              type="button"
+              onClick={() => setYearly(true)}
+              className={cn("rounded-full px-5 py-2 text-sm font-black transition", yearly ? "bg-slate-950 text-white" : "text-slate-500 hover:text-slate-950")}
+            >
+              Yearly
+            </button>
           </div>
         </div>
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -487,11 +501,14 @@ export function PricingBlock() {
               </CardHeader>
               <CardContent className="flex flex-col gap-6">
                 <div>
-                  <p className="text-4xl font-black text-slate-950">{plan[1]}</p>
-                  <p className="mt-3 text-sm font-medium leading-6 text-slate-600">{plan[2]}</p>
+                  <p className="text-4xl font-black text-slate-950">{yearly ? plan[2] : plan[1]}</p>
+                  <p className="mt-1 text-xs font-black uppercase tracking-[0.16em] text-slate-400">
+                    {plan[0] === "Enterprise" ? "Tailored plan" : yearly ? "per month, billed yearly" : "per month"}
+                  </p>
+                  <p className="mt-3 text-sm font-medium leading-6 text-slate-600">{plan[3]}</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  {(plan[3] as string[]).map((feature) => (
+                  {(plan[4] as string[]).map((feature) => (
                     <div key={feature} className="flex items-center gap-3 text-sm font-bold text-slate-700">
                       <CheckCircle2 className="size-4 text-[#00c875]" />
                       {feature}

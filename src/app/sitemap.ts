@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const routes = ["", "/pricing", "/blog", "/about", "/contact"];
+const routes = ["", "/pricing", "/blog", "/about", "/contact", "/privacy", "/terms"];
 
 export const dynamic = "force-static";
 

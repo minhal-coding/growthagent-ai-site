@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Menu, Sparkles } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { DottedSurface } from "@/components/ui/dotted-surface";
+import { DottedShaderSurface } from "@/components/ui/dotted-shader-surface";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const nav = [
@@ -57,12 +57,25 @@ export function SiteHeader() {
             Book a Demo
             <ArrowRight data-icon="inline-end" />
           </Link>
-          <button
-            aria-label="Open menu"
-            className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-slate-200 lg:hidden"
-          >
-            <Menu className="size-5" />
-          </button>
+          <details className="group relative lg:hidden">
+            <summary
+              aria-label="Open menu"
+              className="grid size-10 cursor-pointer list-none place-items-center rounded-full border border-white/10 bg-white/[0.06] text-slate-200 marker:hidden"
+            >
+              <Menu className="size-5" />
+            </summary>
+            <div className="absolute right-0 top-12 grid w-56 gap-1 rounded-3xl border border-white/10 bg-[#07111f]/95 p-2 shadow-[0_24px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
+              {nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-2xl px-4 py-3 text-sm font-bold text-slate-200 transition hover:bg-white/10 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </details>
         </div>
       </div>
     </header>
@@ -71,10 +84,10 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const groups = [
-    { title: "Company", links: ["About", "Careers", "Contact", "Security"] },
-    { title: "Product", links: ["Lead Research", "Outreach", "Inbox", "Analytics"] },
-    { title: "Resources", links: ["Blog", "Docs", "Templates", "API"] },
-    { title: "Legal", links: ["Privacy", "Terms", "DPA", "Compliance"] },
+    { title: "Company", links: [["About", "/about"], ["Contact", "/contact"], ["Book Demo", "/contact"], ["Security", "/#security"]] },
+    { title: "Product", links: [["Lead Research", "/#product"], ["Agents", "/#agents"], ["Pricing", "/pricing"], ["Analytics", "/#showcase"]] },
+    { title: "Resources", links: [["Blog", "/blog"], ["FAQ", "/#faq"], ["Use Cases", "/#use-cases"], ["Demo", "/contact"]] },
+    { title: "Legal", links: [["Privacy", "/privacy"], ["Terms", "/terms"], ["Responsible AI", "/#security"], ["Compliance", "/#security"]] },
   ];
 
   return (
@@ -99,8 +112,8 @@ export function SiteFooter() {
           {groups.map((group) => (
             <div key={group.title} className="flex flex-col gap-3">
               <p className="text-sm font-black text-white">{group.title}</p>
-              {group.links.map((link) => (
-                <Link key={link} href="#" className="text-sm font-medium text-slate-400 transition hover:text-white">
+              {group.links.map(([link, href]) => (
+                <Link key={link} href={href} className="text-sm font-medium text-slate-400 transition hover:text-white">
                   {link}
                 </Link>
               ))}
@@ -125,7 +138,7 @@ export function PageShell({ children, className }: { children: React.ReactNode; 
         className,
       )}
     >
-      <DottedSurface variant="dark" className="z-0 opacity-95" />
+      <DottedShaderSurface className="z-0 opacity-95" />
       <div className="relative z-10">
         <SiteHeader />
         {children}
