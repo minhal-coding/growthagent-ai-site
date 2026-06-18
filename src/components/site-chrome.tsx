@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Menu, Sparkles } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 
 const nav = [
   { label: "Product", href: "/#product" },
@@ -118,14 +119,17 @@ export function PageShell({ children, className }: { children: React.ReactNode; 
   return (
     <div
       className={cn(
-        "min-h-screen overflow-hidden bg-[#f7f7fb] text-slate-950",
+        "relative isolate min-h-screen overflow-hidden bg-[#f7f7fb] text-slate-950",
         "bg-[radial-gradient(circle_at_15%_10%,rgba(97,97,255,0.16),transparent_28%),radial-gradient(circle_at_84%_8%,rgba(0,200,117,0.14),transparent_24%),linear-gradient(180deg,#ffffff_0%,#f7f7fb_38%,#ffffff_100%)]",
         className,
       )}
     >
-      <SiteHeader />
-      {children}
-      <SiteFooter />
+      <DottedSurface className="z-0 opacity-80" />
+      <div className="relative z-10">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </div>
     </div>
   );
 }
