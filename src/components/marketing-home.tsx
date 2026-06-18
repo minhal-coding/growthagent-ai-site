@@ -10,6 +10,7 @@ import { DashboardPreview } from "@/components/dashboard-preview";
 import { BorderTrail } from "@/components/ui/border-trail";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import DisplayCards from "@/components/ui/display-cards";
+import { AgentProductRail } from "@/components/ui/agent-product-rail";
 import { OrbitingAvatarsCTA } from "@/components/ui/orbiting-avatars";
 import { ColorBand, PageShell, Pill, SectionIntro, SparkleBadge } from "@/components/site-chrome";
 import {
@@ -31,6 +32,39 @@ const fadeUp = {
 };
 
 const mondayColors = ["#6161ff", "#00c875", "#ffcb00", "#ff5a5f", "#00d2ff"];
+
+const productWorkflow = [
+  {
+    title: "Define the buyer",
+    description: "Describe the audience, geography, offer, exclusions, and what a qualified lead should look like.",
+    eyebrow: "Target",
+  },
+  {
+    title: "Research the market",
+    description: "Agents scan public sources, find relevant organizations, capture source evidence, and score fit.",
+    eyebrow: "Research",
+  },
+  {
+    title: "Enrich the account",
+    description: "The system adds websites, contact pages, emails, role context, and confidence notes before outreach.",
+    eyebrow: "Enrich",
+  },
+  {
+    title: "Draft outreach",
+    description: "Personalized emails are written with brand context, clear next steps, and human approval gates.",
+    eyebrow: "Draft",
+  },
+  {
+    title: "Track replies",
+    description: "Inbound responses are captured, classified, and used to pause follow-ups before the system acts again.",
+    eyebrow: "Reply",
+  },
+  {
+    title: "Book meetings",
+    description: "Interested replies become meeting-ready opportunities with suggested responses and CRM updates.",
+    eyebrow: "Close",
+  },
+];
 
 export function MarketingHome() {
   return (
@@ -139,6 +173,18 @@ export function MarketingHome() {
               ))}
             </div>
           </div>
+          <div className="mx-auto mt-12 max-w-7xl">
+            <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#00c875]">Product workflow</p>
+                <h3 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">Scroll the operating system.</h3>
+              </div>
+              <p className="max-w-xl text-sm font-medium leading-6 text-slate-400">
+                A guided path from target audience to meeting-ready pipeline, built for operators who want automation with control.
+              </p>
+            </div>
+            <AgentProductRail items={productWorkflow} colors={mondayColors} compact />
+          </div>
         </section>
 
         <section className="px-5 py-20 sm:px-6 lg:px-8">
@@ -175,24 +221,16 @@ export function MarketingHome() {
               title="A network of agents working as one team."
               text="Each agent owns a specific job, shares context with the others, and reports back to the command center."
             />
-            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {agents.map((agent, index) => (
-                <Card key={agent.name} className="rounded-3xl border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-slate-950">
-                      <span
-                        className="grid size-11 place-items-center rounded-2xl text-white"
-                        style={{ backgroundColor: mondayColors[index % mondayColors.length] }}
-                      >
-                        <agent.icon className="size-5" />
-                      </span>
-                      {agent.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-sm font-medium leading-6 text-slate-600">{agent.description}</CardContent>
-                </Card>
-              ))}
-            </div>
+            <AgentProductRail
+              items={agents.map((agent) => ({
+                title: agent.name,
+                description: agent.description,
+                icon: agent.icon,
+                eyebrow: "Agent",
+              }))}
+              colors={mondayColors}
+              className="mt-12"
+            />
           </div>
         </section>
 
