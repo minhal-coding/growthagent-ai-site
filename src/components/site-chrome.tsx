@@ -19,8 +19,8 @@ export function Logo() {
         G
       </span>
       <span className="leading-tight">
-        <span className="block text-sm font-black tracking-tight text-slate-950">GrowthAgent AI</span>
-        <span className="block text-[11px] font-semibold text-slate-500">Revenue work OS</span>
+        <span className="block text-sm font-black tracking-tight text-white">GrowthAgent AI</span>
+        <span className="block text-[11px] font-semibold text-slate-400">Revenue work OS</span>
       </span>
     </Link>
   );
@@ -28,15 +28,15 @@ export function Logo() {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/82 backdrop-blur-2xl">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#030407]/78 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Logo />
-        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-white p-1 shadow-sm lg:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 shadow-[0_18px_45px_rgba(0,0,0,0.22)] lg:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-950"
+              className="rounded-full px-4 py-2 text-sm font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white"
             >
               {item.label}
             </Link>
@@ -45,20 +45,20 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             href="/contact"
-            className="hidden rounded-full px-4 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-100 sm:block"
+            className="hidden rounded-full px-4 py-2 text-sm font-bold text-slate-300 transition hover:bg-white/10 hover:text-white sm:block"
           >
             Sign in
           </Link>
           <Link
             href="/contact"
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-black text-white shadow-[0_12px_24px_rgba(15,23,42,0.18)] transition hover:-translate-y-0.5 hover:bg-[#6161ff]"
+            className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-5 text-sm font-black text-slate-950 shadow-[0_16px_34px_rgba(97,97,255,0.22)] transition hover:-translate-y-0.5 hover:bg-[#8f8fff]"
           >
             Book a Demo
             <ArrowRight data-icon="inline-end" />
           </Link>
           <button
             aria-label="Open menu"
-            className="grid size-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 lg:hidden"
+            className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-slate-200 lg:hidden"
           >
             <Menu className="size-5" />
           </button>
@@ -77,17 +77,17 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-white/10 bg-[#030407]/94">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.3fr_2fr] lg:px-8">
         <div className="flex flex-col gap-5">
           <Logo />
-          <p className="max-w-sm text-sm leading-6 text-slate-600">
+          <p className="max-w-sm text-sm leading-6 text-slate-400">
             GrowthAgent AI gives teams an autonomous revenue operating system for research, enrichment, outreach,
             reply tracking, follow-up planning, meetings, and CRM hygiene.
           </p>
           <div className="flex flex-wrap gap-2">
             {["Human review", "Reply aware", "Audit logs"].map((item) => (
-              <span key={item} className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700">
+              <span key={item} className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-bold text-slate-300">
                 <CheckCircle2 className="size-3 text-[#00c875]" />
                 {item}
               </span>
@@ -97,9 +97,9 @@ export function SiteFooter() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {groups.map((group) => (
             <div key={group.title} className="flex flex-col gap-3">
-              <p className="text-sm font-black text-slate-950">{group.title}</p>
+              <p className="text-sm font-black text-white">{group.title}</p>
               {group.links.map((link) => (
-                <Link key={link} href="#" className="text-sm font-medium text-slate-500 transition hover:text-slate-950">
+                <Link key={link} href="#" className="text-sm font-medium text-slate-400 transition hover:text-white">
                   {link}
                 </Link>
               ))}
@@ -107,7 +107,7 @@ export function SiteFooter() {
           ))}
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-slate-200 px-5 py-6 text-xs font-medium text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs font-medium text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <span>GrowthAgent AI - 2026. Designed and automated by YAM AI.</span>
         <span>Built for responsible outbound automation.</span>
       </div>
@@ -119,12 +119,12 @@ export function PageShell({ children, className }: { children: React.ReactNode; 
   return (
     <div
       className={cn(
-        "relative isolate min-h-screen overflow-hidden bg-[#f7f7fb] text-slate-950",
-        "bg-[radial-gradient(circle_at_15%_10%,rgba(97,97,255,0.16),transparent_28%),radial-gradient(circle_at_84%_8%,rgba(0,200,117,0.14),transparent_24%),linear-gradient(180deg,#ffffff_0%,#f7f7fb_38%,#ffffff_100%)]",
+        "growthagent-dark relative isolate min-h-screen overflow-hidden bg-[#030407] text-white",
+        "bg-[radial-gradient(circle_at_16%_5%,rgba(97,97,255,0.28),transparent_30rem),radial-gradient(circle_at_82%_0%,rgba(42,117,255,0.2),transparent_32rem),radial-gradient(circle_at_72%_40%,rgba(0,200,117,0.1),transparent_28rem),linear-gradient(180deg,#030407_0%,#050712_46%,#020308_100%)]",
         className,
       )}
     >
-      <DottedSurface className="z-0 opacity-80" />
+      <DottedSurface variant="dark" className="z-0 opacity-95" />
       <div className="relative z-10">
         <SiteHeader />
         {children}
@@ -152,8 +152,8 @@ export function SectionIntro({
           {eyebrow}
         </span>
       ) : null}
-      <h2 className="text-balance text-3xl font-black tracking-tight text-slate-950 sm:text-5xl">{title}</h2>
-      <p className="text-base leading-7 text-slate-600 sm:text-lg">{text}</p>
+      <h2 className="text-balance text-3xl font-black tracking-tight text-white sm:text-5xl">{title}</h2>
+      <p className="text-base leading-7 text-slate-300 sm:text-lg">{text}</p>
     </div>
   );
 }
@@ -168,17 +168,17 @@ export function Pill({
   className?: string;
 }) {
   const tones = {
-    blue: "border-[#6161ff]/20 bg-[#6161ff]/10 text-[#3730a3]",
-    green: "border-[#00c875]/20 bg-[#00c875]/12 text-[#05603a]",
-    red: "border-[#ff5a5f]/20 bg-[#ff5a5f]/10 text-[#b42318]",
-    yellow: "border-[#ffcb00]/30 bg-[#ffcb00]/18 text-[#7a4f00]",
+    blue: "border-[#6161ff]/30 bg-[#6161ff]/14 text-[#b8bdff]",
+    green: "border-[#00c875]/30 bg-[#00c875]/12 text-[#8ff8c7]",
+    red: "border-[#ff5a5f]/30 bg-[#ff5a5f]/12 text-[#ffb4b6]",
+    yellow: "border-[#ffcb00]/30 bg-[#ffcb00]/14 text-[#ffe58a]",
   };
   return <span className={cn("rounded-full border px-3 py-1 text-xs font-black", tones[tone], className)}>{children}</span>;
 }
 
 export function ColorBand({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={cn("rounded-[2rem] border border-slate-200 bg-white p-4 shadow-[0_24px_80px_rgba(15,23,42,0.08)]", className)}>
+    <div className={cn("rounded-[2rem] border border-white/10 bg-white/[0.06] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl", className)}>
       {children}
     </div>
   );
@@ -186,7 +186,7 @@ export function ColorBand({ children, className }: { children: React.ReactNode; 
 
 export function SparkleBadge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-slate-700 shadow-sm">
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.08] px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-slate-200 shadow-[0_18px_45px_rgba(0,0,0,0.22)]">
       <Sparkles className="size-4 text-[#ffcb00]" />
       {children}
     </span>
