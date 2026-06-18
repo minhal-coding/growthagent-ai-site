@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   },
   basePath: isGitHubPages ? `/${repositoryName}` : undefined,
   assetPrefix: isGitHubPages ? `/${repositoryName}/` : undefined,
+  trailingSlash: true,
 };
 
 export default nextConfig;
