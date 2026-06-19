@@ -1,19 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, Play, Plus, Star } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { DashboardPreview } from "@/components/dashboard-preview";
-import { BorderTrail } from "@/components/ui/border-trail";
 import { ClientRail } from "@/components/ui/client-rail";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { GlowCard } from "@/components/ui/glow-card";
 import { OrbitingAvatarsCTA } from "@/components/ui/orbiting-avatars";
+import { PricingContainer, type PricingPlan } from "@/components/ui/pricing-container";
 import { ShinyLink } from "@/components/ui/shiny-button";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { MobileDashboardPreview } from "@/components/mobile-dashboard-preview";
@@ -297,70 +295,44 @@ export function TestimonialsBlock() {
 }
 
 export function PricingBlock() {
-  const [yearly, setYearly] = useState(false);
-  const plans = [
-    ["Starter", "$99", "$79", "For solo founders testing agentic outbound.", ["1 workspace", "500 researched leads", "Human approval", "Basic analytics"]],
-    ["Growth", "$299", "$239", "For teams running weekly campaigns.", ["5 users", "5,000 researched leads", "Reply capture", "Meeting workflow"]],
-    ["Enterprise", "Custom", "Custom", "For companies needing controls and integrations.", ["SSO", "Dedicated workspace", "CRM integrations", "Custom compliance"]],
+  const plans: PricingPlan[] = [
+    {
+      name: "Starter",
+      monthlyPrice: 99,
+      yearlyPrice: 79,
+      description: "For solo founders testing agentic outbound.",
+      features: ["1 workspace", "500 researched leads", "Human approval", "Basic analytics"],
+      accent: "purple",
+      cta: "Start with Starter",
+    },
+    {
+      name: "Growth",
+      monthlyPrice: 299,
+      yearlyPrice: 239,
+      description: "For teams running weekly campaigns.",
+      features: ["5 users", "5,000 researched leads", "Reply capture", "Meeting workflow"],
+      isPopular: true,
+      accent: "green",
+      cta: "Start with Growth",
+    },
+    {
+      name: "Enterprise",
+      monthlyPrice: "Custom",
+      yearlyPrice: "Custom",
+      description: "For companies needing controls and integrations.",
+      features: ["SSO", "Dedicated workspace", "CRM integrations", "Custom compliance"],
+      accent: "blue",
+      cta: "Talk to Sales",
+    },
   ];
 
   return (
-    <section className="px-5 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <SectionIntro eyebrow="Pricing" title="Pricing that grows with your pipeline." text="Start small, prove the workflow, then scale into a full sales automation layer." />
-        <div className="mt-6 flex justify-center">
-          <div className="rounded-full border border-slate-200 bg-white p-1 shadow-sm">
-            <button
-              type="button"
-              onClick={() => setYearly(false)}
-              className={cn("rounded-full px-5 py-2 text-sm font-black transition", !yearly ? "bg-slate-950 text-white" : "text-slate-500 hover:text-slate-950")}
-            >
-              Monthly
-            </button>
-            <button
-              type="button"
-              onClick={() => setYearly(true)}
-              className={cn("rounded-full px-5 py-2 text-sm font-black transition", yearly ? "bg-slate-950 text-white" : "text-slate-500 hover:text-slate-950")}
-            >
-              Yearly
-            </button>
-          </div>
-        </div>
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {plans.map((plan, index) => (
-            <Card key={plan[0] as string} className={`relative overflow-hidden rounded-[2rem] border-slate-200 bg-white shadow-sm ${index === 1 ? "ring-4 ring-[#6161ff]/18" : ""}`}>
-              {index === 1 ? <BorderTrail /> : null}
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-slate-950">{plan[0]}</CardTitle>
-                  {index === 1 ? <Pill>Popular</Pill> : null}
-                </div>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-6">
-                <div>
-                  <p className="text-4xl font-black text-slate-950">{yearly ? plan[2] : plan[1]}</p>
-                  <p className="mt-1 text-xs font-black uppercase tracking-[0.16em] text-slate-400">
-                    {plan[0] === "Enterprise" ? "Tailored plan" : yearly ? "per month, billed yearly" : "per month"}
-                  </p>
-                  <p className="mt-3 text-sm font-medium leading-6 text-slate-600">{plan[3]}</p>
-                </div>
-                <div className="flex flex-col gap-3">
-                  {(plan[4] as string[]).map((feature) => (
-                    <div key={feature} className="flex items-center gap-3 text-sm font-bold text-slate-700">
-                      <CheckCircle2 className="size-4 text-[#00c875]" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-                <ShinyLink href="/contact" className="h-11 bg-slate-950 text-white shadow-none hover:shadow-[0_18px_50px_rgba(97,97,255,0.24)]">
-                  Start with {plan[0]}
-                </ShinyLink>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+    <PricingContainer
+      compact
+      plans={plans}
+      title="Pricing that grows with your pipeline."
+      subtitle="Start small, prove the workflow, then scale into a full sales automation layer."
+    />
   );
 }
 
