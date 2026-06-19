@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Menu, Sparkles } from "lucide-react";
 
@@ -14,20 +13,11 @@ const nav = [
   { label: "About", href: "/about" },
 ];
 
-const brandLogo = "/brand/growthagent-ai-logo.png";
-
 export function Logo() {
   return (
     <Link href="/" className="group flex items-center gap-3" aria-label="GrowthAgent AI home">
-      <span className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-2xl border border-[#d4af37]/30 bg-black shadow-[0_14px_34px_rgba(212,175,55,0.18)] transition group-hover:-rotate-3 group-hover:border-[#d4af37]/60">
-        <Image
-          src={brandLogo}
-          alt=""
-          fill
-          sizes="44px"
-          priority
-          className="scale-[1.85] object-cover object-center"
-        />
+      <span className="grid size-10 shrink-0 place-items-center rounded-2xl border border-[#d4af37]/35 bg-[#07080d] text-sm font-black text-[#d8b86a] shadow-[0_14px_34px_rgba(212,175,55,0.16)] transition group-hover:-rotate-3 group-hover:border-[#d4af37]/70">
+        GA
       </span>
       <span className="leading-tight">
         <span className="block text-sm font-black tracking-tight text-white">GrowthAgentAI</span>
