@@ -128,9 +128,9 @@ function PricingCard({ plan, yearly, index }: { plan: PricingPlan; yearly: boole
 
         <Link
           href="/contact"
-          className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-xl border-[3px] border-white bg-white px-5 text-base font-black text-[#0b0f18] shadow-[4px_4px_0_#5d6472] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_#5d6472]"
+          className="relative z-20 mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-xl border-[3px] border-white bg-[#05070c] px-5 text-base font-black text-white shadow-[4px_4px_0_rgba(255,255,255,0.72)] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-white hover:text-[#05070c] hover:shadow-[7px_7px_0_rgba(93,100,114,0.9)]"
         >
-          {plan.cta ?? "Book a Demo"}
+          <span className="relative z-10 text-current">{plan.cta ?? "Book a Demo"}</span>
         </Link>
       </div>
     </motion.article>
