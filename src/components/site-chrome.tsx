@@ -134,7 +134,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-white/10 px-5 py-6 text-xs font-medium text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <span>GrowthAgent AI - 2026. Designed and automated by YAM AI.</span>
+        <span>GrowthAgent AI - 2026. Designed and automated by yamautomation.</span>
         <span>Built for responsible outbound automation.</span>
       </div>
     </footer>
