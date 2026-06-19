@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { DashboardPreview } from "@/components/dashboard-preview";
 import { BorderTrail } from "@/components/ui/border-trail";
+import { ClientRail } from "@/components/ui/client-rail";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { GlowCard } from "@/components/ui/glow-card";
 import { OrbitingAvatarsCTA } from "@/components/ui/orbiting-avatars";
@@ -93,20 +94,10 @@ export function MarketingHome() {
         </section>
 
         <section className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-          <div className="mx-auto max-w-7xl border-y border-white/10 py-6">
+          <div className="mx-auto max-w-7xl border-y border-white/10 py-7">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <p className="text-sm font-black text-slate-400">Built for teams that sell through conversations</p>
-              <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:flex lg:items-center lg:gap-2">
-                {logos.map((logo, index) => (
-                  <span
-                    key={logo}
-                    className="shrink-0 snap-start whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-black text-slate-300"
-                    style={{ borderTopColor: mondayColors[index % mondayColors.length] }}
-                  >
-                    {logo}
-                  </span>
-                ))}
-              </div>
+              <ClientRail clients={logos} className="lg:max-w-2xl" />
             </div>
           </div>
         </section>
