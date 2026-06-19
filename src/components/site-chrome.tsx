@@ -16,12 +16,15 @@ const nav = [
 export function Logo() {
   return (
     <Link href="/" className="group flex items-center gap-3" aria-label="GrowthAgent AI home">
-      <span className="grid size-10 shrink-0 place-items-center rounded-2xl border border-[#d4af37]/35 bg-[#07080d] text-sm font-black text-[#d8b86a] shadow-[0_14px_34px_rgba(212,175,55,0.16)] transition group-hover:-rotate-3 group-hover:border-[#d4af37]/70">
-        GA
+      <span className="relative grid size-11 shrink-0 place-items-center rounded-2xl border border-[#d4af37]/45 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.24),transparent_30%),linear-gradient(145deg,#10141d,#050608)] shadow-[0_16px_38px_rgba(212,175,55,0.18)] transition group-hover:-rotate-3 group-hover:border-[#d4af37]/80">
+        <span className="absolute inset-2 rounded-xl border border-[#d4af37]/25" />
+        <ArrowRight className="relative size-5 -rotate-45 text-[#f6d77a]" />
       </span>
       <span className="leading-tight">
-        <span className="block text-sm font-black tracking-tight text-white">GrowthAgentAI</span>
-        <span className="block text-[11px] font-semibold text-[#d8b86a]">Intelligent Growth Systems</span>
+        <span className="block text-base font-black tracking-tight text-white">GrowthAgentAI</span>
+        <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d8b86a]">
+          by Yam Automation
+        </span>
       </span>
     </Link>
   );
