@@ -40,14 +40,14 @@ export function MarketingHome() {
   return (
     <PageShell>
       <main>
-        <section className="relative px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-12 lg:px-8 lg:pb-20 lg:pt-18">
-          <div className="mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+        <section className="relative px-4 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-16 lg:px-8 lg:pb-24 lg:pt-24">
+          <div className="mx-auto max-w-7xl">
             <motion.div
               initial="hidden"
               animate="show"
               variants={fadeUp}
               transition={{ duration: 0.7 }}
-              className="flex flex-col gap-6 sm:gap-7"
+              className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center sm:gap-7"
             >
               <SparkleBadge>
                 <TextScramble className="font-mono" speed={0.02}>
@@ -55,10 +55,10 @@ export function MarketingHome() {
                 </TextScramble>
               </SparkleBadge>
               <div className="space-y-5">
-                <h1 className="max-w-4xl text-balance text-[2.7rem] font-black leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl">
+                <h1 className="mx-auto max-w-5xl text-balance text-[2.7rem] font-black leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl">
                   Your AI-powered sales team.
                 </h1>
-                <p className="max-w-2xl text-base font-medium leading-7 text-slate-300 sm:text-xl sm:leading-8">
+                <p className="mx-auto max-w-2xl text-base font-medium leading-7 text-slate-300 sm:text-xl sm:leading-8">
                   Research prospects, enrich contacts, draft outreach, track replies, and move qualified conversations
                   toward meetings from one clean command center.
                 </p>
@@ -75,7 +75,7 @@ export function MarketingHome() {
                   Watch Demo
                 </Link>
               </div>
-              <div className="grid max-w-xl grid-cols-3 gap-2 pt-1 sm:gap-3">
+              <div className="grid w-full max-w-xl grid-cols-3 gap-2 pt-1 sm:gap-3">
                 {[
                   ["40", "sample leads", "#6161ff"],
                   ["9", "agent roles", "#00c875"],
@@ -88,12 +88,6 @@ export function MarketingHome() {
                 ))}
               </div>
             </motion.div>
-            <div className="lg:hidden">
-              <MobileDashboardPreview />
-            </div>
-            <div className="hidden lg:block">
-              <DashboardPreview />
-            </div>
           </div>
         </section>
 
