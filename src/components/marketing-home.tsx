@@ -40,14 +40,14 @@ export function MarketingHome() {
   return (
     <PageShell>
       <main>
-        <section className="relative px-5 pb-12 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-18">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+        <section className="relative px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-12 lg:px-8 lg:pb-20 lg:pt-18">
+          <div className="mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-[0.92fr_1.08fr]">
             <motion.div
               initial="hidden"
               animate="show"
               variants={fadeUp}
               transition={{ duration: 0.7 }}
-              className="flex flex-col gap-7"
+              className="flex flex-col gap-6 sm:gap-7"
             >
               <SparkleBadge>
                 <TextScramble className="font-mono" speed={0.02}>
@@ -55,35 +55,35 @@ export function MarketingHome() {
                 </TextScramble>
               </SparkleBadge>
               <div className="space-y-5">
-                <h1 className="max-w-4xl text-balance text-5xl font-black tracking-tight text-white sm:text-7xl lg:text-8xl">
+                <h1 className="max-w-4xl text-balance text-[2.7rem] font-black leading-[0.95] tracking-tight text-white sm:text-7xl lg:text-8xl">
                   Your AI-powered sales team.
                 </h1>
-                <p className="max-w-2xl text-lg font-medium leading-8 text-slate-300 sm:text-xl">
+                <p className="max-w-2xl text-base font-medium leading-7 text-slate-300 sm:text-xl sm:leading-8">
                   Research prospects, enrich contacts, draft outreach, track replies, and move qualified conversations
                   toward meetings from one clean command center.
                 </p>
               </div>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <ShinyLink href="/contact">
+              <div className="grid gap-3 sm:flex sm:flex-row">
+                <ShinyLink href="/contact" className="h-12 w-full sm:w-auto">
                   Book a Demo
                 </ShinyLink>
                 <Link
                   href="#showcase"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300"
+                  className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 sm:w-auto"
                 >
                   <Play data-icon="inline-start" />
                   Watch Demo
                 </Link>
               </div>
-              <div className="grid max-w-xl grid-cols-3 gap-3 pt-1">
+              <div className="grid max-w-xl grid-cols-3 gap-2 pt-1 sm:gap-3">
                 {[
                   ["40", "sample leads", "#6161ff"],
                   ["9", "agent roles", "#00c875"],
                   ["1", "control room", "#ffcb00"],
                 ].map(([value, label, color], index) => (
-                  <GlowCard key={label} glowColor={index === 0 ? "purple" : index === 1 ? "green" : "orange"} className="p-4">
-                    <p className="text-3xl font-black" style={{ color }}>{value}</p>
-                    <p className="mt-1 text-xs font-bold text-slate-400">{label}</p>
+                  <GlowCard key={label} glowColor={index === 0 ? "purple" : index === 1 ? "green" : "orange"} className="min-h-24 p-3 sm:p-4">
+                    <p className="text-2xl font-black sm:text-3xl" style={{ color }}>{value}</p>
+                    <p className="mt-1 text-[11px] font-bold leading-4 text-slate-400 sm:text-xs">{label}</p>
                   </GlowCard>
                 ))}
               </div>
@@ -92,15 +92,15 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section className="px-5 py-8 sm:px-6 lg:px-8">
+        <section className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
           <div className="mx-auto max-w-7xl border-y border-white/10 py-6">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
               <p className="text-sm font-black text-slate-400">Built for teams that sell through conversations</p>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:items-center lg:gap-2">
+              <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:flex lg:items-center lg:gap-2">
                 {logos.map((logo, index) => (
                   <span
                     key={logo}
-                    className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-black text-slate-300"
+                    className="shrink-0 snap-start whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-black text-slate-300"
                     style={{ borderTopColor: mondayColors[index % mondayColors.length] }}
                   >
                     {logo}
@@ -111,7 +111,7 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section id="product" className="px-5 py-16 sm:px-6 lg:px-8">
+        <section id="product" className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.86fr_1.14fr]">
             <SectionIntro
               align="left"
@@ -119,9 +119,9 @@ export function MarketingHome() {
               title="Stop stitching sales work across five tools."
               text="GrowthAgent AI keeps the core outbound loop in one place: find leads, understand them, write the message, watch replies, and prepare the next action."
             />
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0">
               {coreFeatures.map((feature, index) => (
-                <GlowCard key={feature.title} glowColor={index % 2 === 0 ? "purple" : "green"} className="p-6">
+                <GlowCard key={feature.title} glowColor={index % 2 === 0 ? "purple" : "green"} className="min-w-[82vw] snap-start p-5 sm:min-w-0 sm:p-6">
                   <feature.icon className="size-6" style={{ color: mondayColors[index % mondayColors.length] }} />
                   <p className="mt-5 text-lg font-black text-white">{feature.title}</p>
                   <p className="mt-2 text-sm font-medium leading-6 text-slate-400">{feature.text}</p>
@@ -131,21 +131,21 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section id="agents" className="px-5 py-16 sm:px-6 lg:px-8">
+        <section id="agents" className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionIntro
               eyebrow="Agent architecture"
               title="A small sales team made of focused agents."
               text="Each agent owns one job. The command center shows what is ready, blocked, or waiting for human review."
             />
-            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid gap-3 sm:mt-12 md:grid-cols-2 xl:grid-cols-3">
               {coreAgents.map((agent, index) => (
-                <GlowCard key={agent.name} glowColor={index % 3 === 0 ? "purple" : index % 3 === 1 ? "green" : "orange"} className="p-6">
+                <GlowCard key={agent.name} glowColor={index % 3 === 0 ? "purple" : index % 3 === 1 ? "green" : "orange"} className="p-5 sm:p-6">
                   <div className="flex items-start justify-between gap-4">
                     <agent.icon className="size-6" style={{ color: mondayColors[index % mondayColors.length] }} />
                     <Pill tone={index % 3 === 1 ? "green" : "blue"}>Agent</Pill>
                   </div>
-                  <p className="mt-7 text-lg font-black text-white">{agent.name}</p>
+                  <p className="mt-5 text-lg font-black text-white sm:mt-7">{agent.name}</p>
                   <p className="mt-2 text-sm font-medium leading-6 text-slate-400">{agent.description}</p>
                 </GlowCard>
               ))}
@@ -153,7 +153,7 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section id="showcase" className="px-5 py-16 sm:px-6 lg:px-8">
+        <section id="showcase" className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionIntro
               eyebrow="Product preview"
@@ -161,7 +161,7 @@ export function MarketingHome() {
               text="A clear view of lead research, campaign drafts, reply status, and the actions that need approval."
             />
             <ContainerScroll
-              className="mt-4 min-h-[42rem]"
+              className="mt-4 min-h-[34rem] sm:min-h-[42rem]"
               titleComponent={<Pill tone="green">Live agent workspace preview</Pill>}
             >
               <DashboardPreview />
@@ -169,17 +169,17 @@ export function MarketingHome() {
           </div>
         </section>
 
-        <section id="use-cases" className="px-5 py-16 sm:px-6 lg:px-8">
-          <ColorBand className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <section id="use-cases" className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+          <ColorBand className="mx-auto grid max-w-7xl gap-8 p-5 sm:p-7 lg:grid-cols-[0.9fr_1.1fr]">
             <SectionIntro
               align="left"
               eyebrow="Use cases"
               title="For businesses that need more qualified conversations."
               text="Start with conferences and events, then expand into agencies, SaaS, education, consulting, and training companies."
             />
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-2 sm:grid-cols-2 sm:gap-3">
               {useCases.map((item, index) => (
-                <div key={item} className="flex items-center gap-3 rounded-3xl border border-white/10 bg-white/[0.05] p-4">
+                <div key={item} className="flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] p-4 sm:rounded-3xl">
                   <CheckCircle2 className="size-5" style={{ color: mondayColors[index % mondayColors.length] }} />
                   <span className="font-black text-white">{item}</span>
                 </div>
@@ -188,7 +188,7 @@ export function MarketingHome() {
           </ColorBand>
         </section>
 
-        <section className="px-5 py-16 sm:px-6 lg:px-8">
+        <section className="px-4 pb-24 pt-12 sm:px-6 sm:py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <OrbitingAvatarsCTA
               title="Ready to show this to a real customer?"

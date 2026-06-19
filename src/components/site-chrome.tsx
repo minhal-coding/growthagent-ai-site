@@ -29,8 +29,8 @@ export function Logo() {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#030407]/78 backdrop-blur-2xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#030407]/84 backdrop-blur-2xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <Logo />
         <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 shadow-[0_18px_45px_rgba(0,0,0,0.22)] lg:flex">
           {nav.map((item) => (
@@ -52,7 +52,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/contact"
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-5 text-sm font-black text-slate-950 shadow-[0_16px_34px_rgba(97,97,255,0.22)] transition hover:-translate-y-0.5 hover:bg-[#8f8fff]"
+            className="hidden h-10 items-center gap-2 rounded-full bg-white px-5 text-sm font-black text-slate-950 shadow-[0_16px_34px_rgba(97,97,255,0.22)] transition hover:-translate-y-0.5 hover:bg-[#8f8fff] sm:inline-flex"
           >
             Book a Demo
             <ArrowRight data-icon="inline-end" />
@@ -74,6 +74,13 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
+              <div className="my-1 h-px bg-white/10" />
+              <Link
+                href="/contact"
+                className="rounded-2xl bg-white px-4 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-[#8f8fff]"
+              >
+                Book a Demo
+              </Link>
             </div>
           </details>
         </div>
@@ -92,7 +99,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-white/10 bg-[#030407]/94">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.3fr_2fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.3fr_2fr] lg:px-8">
         <div className="flex flex-col gap-5">
           <Logo />
           <p className="max-w-sm text-sm leading-6 text-slate-400">
@@ -108,16 +115,21 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {groups.map((group) => (
-            <div key={group.title} className="flex flex-col gap-3">
-              <p className="text-sm font-black text-white">{group.title}</p>
-              {group.links.map(([link, href]) => (
-                <Link key={link} href={href} className="text-sm font-medium text-slate-400 transition hover:text-white">
-                  {link}
-                </Link>
-              ))}
-            </div>
+            <details key={group.title} className="group rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:border-0 sm:bg-transparent sm:p-0" open>
+              <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-black text-white marker:hidden sm:pointer-events-none">
+                {group.title}
+                <span className="text-slate-500 transition group-open:rotate-45 sm:hidden">+</span>
+              </summary>
+              <div className="mt-3 flex flex-col gap-3">
+                {group.links.map(([link, href]) => (
+                  <Link key={link} href={href} className="min-h-9 text-sm font-medium text-slate-400 transition hover:text-white">
+                    {link}
+                  </Link>
+                ))}
+              </div>
+            </details>
           ))}
         </div>
       </div>
@@ -143,6 +155,15 @@ export function PageShell({ children, className }: { children: React.ReactNode; 
         <SiteHeader />
         {children}
         <SiteFooter />
+      </div>
+      <div className="fixed inset-x-3 bottom-3 z-50 sm:hidden">
+        <Link
+          href="/contact"
+          className="flex h-12 items-center justify-center gap-2 rounded-full border border-white/10 bg-white text-sm font-black text-slate-950 shadow-[0_18px_60px_rgba(0,0,0,0.48)]"
+        >
+          Book a Demo
+          <ArrowRight className="size-4" />
+        </Link>
       </div>
     </div>
   );

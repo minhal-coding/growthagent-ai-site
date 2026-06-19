@@ -34,9 +34,9 @@ export function DashboardPreview() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="relative"
     >
-      <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#6161ff]/20 via-[#00c875]/10 to-[#ffcb00]/20 blur-2xl" />
-      <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_28px_90px_rgba(15,23,42,0.18)]">
-        <div className="rounded-[1.5rem] border border-slate-200 bg-[#f8fafc]">
+      <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-[#6161ff]/20 via-[#00c875]/10 to-[#ffcb00]/20 blur-2xl sm:-inset-6 sm:rounded-[2.5rem]" />
+      <div className="relative overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white p-2 shadow-[0_28px_90px_rgba(15,23,42,0.18)] sm:rounded-[2rem] sm:p-3">
+        <div className="rounded-[1.15rem] border border-slate-200 bg-[#f8fafc] sm:rounded-[1.5rem]">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 px-4 py-3">
             <div className="flex items-center gap-2">
               <span className="size-3 rounded-full bg-[#ff5a5f]" />
@@ -49,8 +49,8 @@ export function DashboardPreview() {
             </div>
           </div>
 
-          <div className="grid gap-3 p-4 lg:grid-cols-[0.75fr_1.45fr_0.8fr]">
-            <aside className="space-y-3">
+          <div className="grid gap-3 p-3 sm:p-4 lg:grid-cols-[0.75fr_1.45fr_0.8fr]">
+            <aside className="grid gap-3 sm:grid-cols-3 lg:block lg:space-y-3">
               {[
                 { name: "Research", text: "Finding accounts", Icon: Activity, color: "text-[#6161ff]" },
                 { name: "Enrichment", text: "Contact evidence", Icon: Database, color: "text-[#00c875]" },
@@ -59,7 +59,7 @@ export function DashboardPreview() {
                 <motion.div
                   key={name}
                   whileHover={{ y: -2 }}
-                  className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+                  className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4"
                 >
                   <div className="mb-3 flex items-center justify-between">
                     <Icon className={`size-5 ${color}`} />
@@ -71,7 +71,7 @@ export function DashboardPreview() {
               ))}
             </aside>
 
-            <section className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+            <section className="rounded-3xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
               <div className="mb-4 flex items-center justify-between">
                 <div>
                   <p className="text-sm font-black text-slate-950">Revenue Pipeline</p>
@@ -79,7 +79,7 @@ export function DashboardPreview() {
                 </div>
                 <Sparkles className="size-5 text-[#ffcb00]" />
               </div>
-              <div className="grid gap-3 sm:grid-cols-4">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {columns.map((column) => (
                   <div key={column.label} className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
                     <div className={`mb-3 h-2 rounded-full ${column.color}`} />
@@ -88,31 +88,33 @@ export function DashboardPreview() {
                   </div>
                 ))}
               </div>
-              <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200">
-                <div className="grid grid-cols-4 bg-slate-50 px-3 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
-                  <span>Lead</span>
-                  <span>Owner</span>
-                  <span>Score</span>
-                  <span>Status</span>
-                </div>
-                {rows.map((row) => (
-                  <div key={row.company} className="grid grid-cols-4 border-t border-slate-200 px-3 py-3 text-xs">
-                    <span className="truncate font-black text-slate-950">{row.company}</span>
-                    <span className="truncate font-medium text-slate-500">{row.owner}</span>
-                    <span className="font-black text-[#6161ff]">{row.score}</span>
-                    <span className="w-fit rounded-full bg-[#00c875]/14 px-2 py-1 font-black text-[#05603a]">{row.status}</span>
+              <div className="mt-5 overflow-x-auto rounded-2xl border border-slate-200">
+                <div className="min-w-[34rem]">
+                  <div className="grid grid-cols-4 bg-slate-50 px-3 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">
+                    <span>Lead</span>
+                    <span>Owner</span>
+                    <span>Score</span>
+                    <span>Status</span>
                   </div>
-                ))}
+                  {rows.map((row) => (
+                    <div key={row.company} className="grid grid-cols-4 border-t border-slate-200 px-3 py-3 text-xs">
+                      <span className="truncate font-black text-slate-950">{row.company}</span>
+                      <span className="truncate font-medium text-slate-500">{row.owner}</span>
+                      <span className="font-black text-[#6161ff]">{row.score}</span>
+                      <span className="w-fit rounded-full bg-[#00c875]/14 px-2 py-1 font-black text-[#05603a]">{row.status}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
 
-            <aside className="space-y-3">
+            <aside className="grid gap-3 sm:grid-cols-3 lg:block lg:space-y-3">
               {[
                 { title: "Reply captured", text: "Follow-up paused", Icon: MessageSquareReply, color: "text-[#6161ff]" },
                 { title: "Meeting ready", text: "Intent detected", Icon: CalendarCheck, color: "text-[#00c875]" },
                 { title: "CRM synced", text: "Audit trail saved", Icon: CheckCircle2, color: "text-[#ffcb00]" },
               ].map(({ title, text, Icon, color }) => (
-                <div key={title} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <div key={title} className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
                   <div className="mb-3 flex items-center gap-2 text-sm font-black text-slate-950">
                     <Icon className={`size-5 ${color}`} />
                     {title}
@@ -120,7 +122,7 @@ export function DashboardPreview() {
                   <p className="text-xs font-medium leading-5 text-slate-500">{text}</p>
                 </div>
               ))}
-              <div className="rounded-2xl bg-slate-950 p-4 text-white">
+              <div className="rounded-2xl bg-slate-950 p-3 text-white sm:p-4">
                 <div className="mb-3 flex items-center gap-2 text-sm font-black">
                   <Bot className="size-5 text-[#00c875]" />
                   Next action

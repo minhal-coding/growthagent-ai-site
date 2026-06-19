@@ -123,9 +123,13 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 }
 
@@ -303,6 +307,18 @@
     background-attachment: fixed;
     filter: blur(24px);
     opacity: 0.9;
+  }
+
+  @media (max-width: 640px) {
+    [data-glow-card] {
+      --spotlight-size: 180px;
+    }
+
+    button,
+    a,
+    summary {
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 }
 
