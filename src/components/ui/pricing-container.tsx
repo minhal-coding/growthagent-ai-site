@@ -149,9 +149,8 @@ export function PricingContainer({
 
   return (
     <section className={cn("relative overflow-x-clip px-4 py-16 sm:px-6 lg:px-8", className)}>
-      <div className="absolute inset-0 bg-[#050508]" />
-      <div className="absolute inset-0 opacity-70 [background-image:radial-gradient(#1b6fff_1px,transparent_1px)] [background-size:22px_22px]" />
-      <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_50%_0%,rgba(97,97,255,0.22),transparent_55%)]" />
+      <div className="absolute inset-0 bg-transparent" />
+      <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_50%_0%,rgba(97,97,255,0.16),transparent_64%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="mx-auto max-w-4xl text-center">
