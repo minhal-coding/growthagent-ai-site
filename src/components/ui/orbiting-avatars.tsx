@@ -51,7 +51,7 @@ export function OrbitingAvatarsCTA({
 
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5">
         <p className="rounded-full border border-[#00c875]/25 bg-[#00c875]/12 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#05603a]">
-          Built by yamautomation
+          Built by Yam Automation
         </p>
         <h2 className="text-balance text-4xl font-black tracking-tight text-slate-950 sm:text-6xl">{title}</h2>
         <p className="text-lg font-medium leading-8 text-slate-600">{description}</p>
