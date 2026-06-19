@@ -11,8 +11,6 @@ import { cn } from "@/lib/utils";
 import { DashboardPreview } from "@/components/dashboard-preview";
 import { BorderTrail } from "@/components/ui/border-trail";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import DisplayCards from "@/components/ui/display-cards";
-import { AgentProductRail } from "@/components/ui/agent-product-rail";
 import { GlowCard } from "@/components/ui/glow-card";
 import { OrbitingAvatarsCTA } from "@/components/ui/orbiting-avatars";
 import { ShinyLink } from "@/components/ui/shiny-button";
@@ -20,13 +18,10 @@ import { TextScramble } from "@/components/ui/text-scramble";
 import { ColorBand, PageShell, Pill, SectionIntro, SparkleBadge } from "@/components/site-chrome";
 import {
   agents,
-  benefits,
   blogPosts,
   faqs,
   features,
   logos,
-  problems,
-  securityPoints,
   testimonials,
   useCases,
 } from "@/components/site-data";
@@ -38,64 +33,34 @@ const fadeUp = {
 
 const mondayColors = ["#6161ff", "#00c875", "#ffcb00", "#ff5a5f", "#00d2ff"];
 
-const productWorkflow = [
-  {
-    title: "Define the buyer",
-    description: "Describe the audience, geography, offer, exclusions, and what a qualified lead should look like.",
-    eyebrow: "Target",
-  },
-  {
-    title: "Research the market",
-    description: "Agents scan public sources, find relevant organizations, capture source evidence, and score fit.",
-    eyebrow: "Research",
-  },
-  {
-    title: "Enrich the account",
-    description: "The system adds websites, contact pages, emails, role context, and confidence notes before outreach.",
-    eyebrow: "Enrich",
-  },
-  {
-    title: "Draft outreach",
-    description: "Personalized emails are written with brand context, clear next steps, and human approval gates.",
-    eyebrow: "Draft",
-  },
-  {
-    title: "Track replies",
-    description: "Inbound responses are captured, classified, and used to pause follow-ups before the system acts again.",
-    eyebrow: "Reply",
-  },
-  {
-    title: "Book meetings",
-    description: "Interested replies become meeting-ready opportunities with suggested responses and CRM updates.",
-    eyebrow: "Close",
-  },
-];
-
 export function MarketingHome() {
+  const coreAgents = agents.slice(0, 6);
+  const coreFeatures = features.slice(0, 4);
+
   return (
     <PageShell>
       <main>
-        <section className="relative px-5 pb-16 pt-12 sm:px-6 lg:px-8 lg:pb-24 lg:pt-18">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.88fr_1.12fr]">
+        <section className="relative px-5 pb-12 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-18">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
             <motion.div
               initial="hidden"
               animate="show"
               variants={fadeUp}
               transition={{ duration: 0.7 }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-7"
             >
               <SparkleBadge>
                 <TextScramble className="font-mono" speed={0.02}>
-                  Autonomous sales team in one workspace
+                  AI revenue automation for modern teams
                 </TextScramble>
               </SparkleBadge>
               <div className="space-y-5">
-                <h1 className="text-balance text-5xl font-black tracking-tight text-slate-950 sm:text-7xl lg:text-8xl">
-                  Your AI-Powered <span className="rounded-[1rem] bg-[#ffcb00] px-3 text-slate-950">Sales Team.</span>
+                <h1 className="max-w-4xl text-balance text-5xl font-black tracking-tight text-white sm:text-7xl lg:text-8xl">
+                  Your AI-powered sales team.
                 </h1>
-                <p className="max-w-2xl text-lg font-medium leading-8 text-slate-600 sm:text-xl">
-                  GrowthAgent AI researches leads, personalizes outreach, tracks replies, and automates follow-ups so
-                  your business can turn prospects into conversations automatically.
+                <p className="max-w-2xl text-lg font-medium leading-8 text-slate-300 sm:text-xl">
+                  Research prospects, enrich contacts, draft outreach, track replies, and move qualified conversations
+                  toward meetings from one clean command center.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -110,35 +75,32 @@ export function MarketingHome() {
                   Watch Demo
                 </Link>
               </div>
-              <div className="grid max-w-xl grid-cols-3 gap-3">
+              <div className="grid max-w-xl grid-cols-3 gap-3 pt-1">
                 {[
-                  ["24/7", "agent operations", "#6161ff"],
-                  ["9", "specialized agents", "#00c875"],
-                  ["1", "command center", "#ffcb00"],
+                  ["40", "sample leads", "#6161ff"],
+                  ["9", "agent roles", "#00c875"],
+                  ["1", "control room", "#ffcb00"],
                 ].map(([value, label, color], index) => (
                   <GlowCard key={label} glowColor={index === 0 ? "purple" : index === 1 ? "green" : "orange"} className="p-4">
-                    <p className="text-3xl font-black text-slate-950" style={{ color }}>{value}</p>
-                    <p className="mt-1 text-xs font-bold text-slate-500">{label}</p>
+                    <p className="text-3xl font-black" style={{ color }}>{value}</p>
+                    <p className="mt-1 text-xs font-bold text-slate-400">{label}</p>
                   </GlowCard>
                 ))}
-              </div>
-              <div className="hidden h-56 items-center justify-start xl:flex">
-                <DisplayCards />
               </div>
             </motion.div>
             <DashboardPreview />
           </div>
         </section>
 
-        <section className="px-5 py-6 sm:px-6 lg:px-8">
-          <ColorBand className="mx-auto max-w-7xl rounded-[1.75rem]">
+        <section className="px-5 py-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl border-y border-white/10 py-6">
             <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-              <p className="text-sm font-black text-slate-500">Trusted by modern growth teams, event operators, and founders</p>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:flex lg:items-center lg:gap-3">
+              <p className="text-sm font-black text-slate-400">Built for teams that sell through conversations</p>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:flex lg:items-center lg:gap-2">
                 {logos.map((logo, index) => (
                   <span
                     key={logo}
-                    className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-black text-slate-600"
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-black text-slate-300"
                     style={{ borderTopColor: mondayColors[index % mondayColors.length] }}
                   >
                     {logo}
@@ -146,105 +108,57 @@ export function MarketingHome() {
                 ))}
               </div>
             </div>
-          </ColorBand>
+          </div>
         </section>
 
-        <section id="product" className="px-5 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.88fr_1.12fr]">
+        <section id="product" className="px-5 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.86fr_1.14fr]">
             <SectionIntro
               align="left"
-              eyebrow="The problem"
-              title="Manual outbound is broken."
-              text="Most teams do not lose because they lack prospects. They lose because research, follow-up, reply handling, and CRM hygiene are scattered across too many tabs."
+              eyebrow="What it replaces"
+              title="Stop stitching sales work across five tools."
+              text="GrowthAgent AI keeps the core outbound loop in one place: find leads, understand them, write the message, watch replies, and prepare the next action."
             />
             <div className="grid gap-4 sm:grid-cols-2">
-              {problems.map((problem, index) => (
-                <Card key={problem} className="rounded-3xl border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-3 text-slate-950">
-                      <span
-                        className="grid size-10 place-items-center rounded-2xl text-sm font-black text-white"
-                        style={{ backgroundColor: mondayColors[index % mondayColors.length] }}
-                      >
-                        {index + 1}
-                      </span>
-                      {problem}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-sm font-medium leading-6 text-slate-600">
-                    GrowthAgent AI turns this manual work into a controlled agent workflow with clear ownership.
-                  </CardContent>
-                </Card>
+              {coreFeatures.map((feature, index) => (
+                <GlowCard key={feature.title} glowColor={index % 2 === 0 ? "purple" : "green"} className="p-6">
+                  <feature.icon className="size-6" style={{ color: mondayColors[index % mondayColors.length] }} />
+                  <p className="mt-5 text-lg font-black text-white">{feature.title}</p>
+                  <p className="mt-2 text-sm font-medium leading-6 text-slate-400">{feature.text}</p>
+                </GlowCard>
               ))}
             </div>
           </div>
-          <div className="mx-auto mt-12 max-w-7xl">
-            <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[#00c875]">Product workflow</p>
-                <h3 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">Scroll the operating system.</h3>
-              </div>
-              <p className="max-w-xl text-sm font-medium leading-6 text-slate-400">
-                A guided path from target audience to meeting-ready pipeline, built for operators who want automation with control.
-              </p>
-            </div>
-            <AgentProductRail items={productWorkflow} colors={mondayColors} compact />
-          </div>
         </section>
 
-        <section id="use-cases" className="px-5 py-20 sm:px-6 lg:px-8">
-          <ColorBand className="mx-auto grid max-w-7xl items-center gap-10 bg-[#f6f3ff] lg:grid-cols-[1fr_1.05fr]">
-            <div className="grid gap-3">
-              {["Define target", "Research leads", "Enrich data", "Generate outreach", "Track replies", "Book meetings"].map((step, index) => (
-                <div key={step} className="flex items-center gap-4 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <span
-                    className="grid size-11 place-items-center rounded-2xl text-sm font-black text-white"
-                    style={{ backgroundColor: mondayColors[index % mondayColors.length] }}
-                  >
-                    {index + 1}
-                  </span>
-                  <div>
-                    <p className="font-black text-slate-950">{step}</p>
-                    <p className="text-sm font-medium text-slate-500">Handled by specialized agents with audit trails.</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <SectionIntro
-              align="left"
-              eyebrow="The solution"
-              title="A sales work OS, not another email tool."
-              text="GrowthAgent AI coordinates research, enrichment, message generation, reply capture, follow-up planning, meeting readiness, and CRM updates inside one cheerful control room."
-            />
-          </ColorBand>
-        </section>
-
-        <section id="agents" className="px-5 py-20 sm:px-6 lg:px-8">
+        <section id="agents" className="px-5 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionIntro
               eyebrow="Agent architecture"
-              title="A network of agents working as one team."
-              text="Each agent owns a specific job, shares context with the others, and reports back to the command center."
+              title="A small sales team made of focused agents."
+              text="Each agent owns one job. The command center shows what is ready, blocked, or waiting for human review."
             />
-            <AgentProductRail
-              items={agents.map((agent) => ({
-                title: agent.name,
-                description: agent.description,
-                icon: agent.icon,
-                eyebrow: "Agent",
-              }))}
-              colors={mondayColors}
-              className="mt-12"
-            />
+            <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {coreAgents.map((agent, index) => (
+                <GlowCard key={agent.name} glowColor={index % 3 === 0 ? "purple" : index % 3 === 1 ? "green" : "orange"} className="p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <agent.icon className="size-6" style={{ color: mondayColors[index % mondayColors.length] }} />
+                    <Pill tone={index % 3 === 1 ? "green" : "blue"}>Agent</Pill>
+                  </div>
+                  <p className="mt-7 text-lg font-black text-white">{agent.name}</p>
+                  <p className="mt-2 text-sm font-medium leading-6 text-slate-400">{agent.description}</p>
+                </GlowCard>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section id="showcase" className="px-5 py-20 sm:px-6 lg:px-8">
+        <section id="showcase" className="px-5 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <SectionIntro
-              eyebrow="Dashboard showcase"
-              title="The dashboard your growth team actually needs."
-              text="Lead database, campaigns, reply tracking, analytics, and the agent command center are built into one workflow."
+              eyebrow="Product preview"
+              title="The command center stays simple."
+              text="A clear view of lead research, campaign drafts, reply status, and the actions that need approval."
             />
             <ContainerScroll
               className="mt-4 min-h-[42rem]"
@@ -252,112 +166,33 @@ export function MarketingHome() {
             >
               <DashboardPreview />
             </ContainerScroll>
-            <div className="mt-12 grid gap-5 lg:grid-cols-5">
-              {["Lead database", "Campaign management", "Reply tracking", "Analytics", "Agent command center"].map((item, index) => (
-                <div
-                  key={item}
-                  className="rounded-[1.75rem] border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="mb-8 h-2 rounded-full" style={{ backgroundColor: mondayColors[index % mondayColors.length] }} />
-                  <p className="text-lg font-black text-slate-950">{item}</p>
-                  <p className="mt-3 text-sm font-medium leading-6 text-slate-600">
-                    Realistic operators, statuses, queues, and next actions built for repeatable outbound.
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
-        <section id="security" className="px-5 py-20 sm:px-6 lg:px-8">
-          <ColorBand className="mx-auto max-w-7xl bg-[#ecfeff]">
-            <SectionIntro eyebrow="How it works" title="From target market to booked conversations." text="Start with a target audience. The agent team does the operational work and asks for approval when it should." />
-            <div className="mt-12 grid gap-4 md:grid-cols-5">
-              {["Define target audience", "AI researches leads", "Emails are generated", "Replies are tracked", "Meetings are booked"].map((step, index) => (
-                <div key={step} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <span className="text-sm font-black" style={{ color: mondayColors[index % mondayColors.length] }}>Step {index + 1}</span>
-                  <p className="mt-4 text-lg font-black text-slate-950">{step}</p>
+        <section id="use-cases" className="px-5 py-16 sm:px-6 lg:px-8">
+          <ColorBand className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <SectionIntro
+              align="left"
+              eyebrow="Use cases"
+              title="For businesses that need more qualified conversations."
+              text="Start with conferences and events, then expand into agencies, SaaS, education, consulting, and training companies."
+            />
+            <div className="grid gap-3 sm:grid-cols-2">
+              {useCases.map((item, index) => (
+                <div key={item} className="flex items-center gap-3 rounded-3xl border border-white/10 bg-white/[0.05] p-4">
+                  <CheckCircle2 className="size-5" style={{ color: mondayColors[index % mondayColors.length] }} />
+                  <span className="font-black text-white">{item}</span>
                 </div>
               ))}
             </div>
           </ColorBand>
         </section>
 
-        <section className="px-5 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <SectionIntro eyebrow="Features" title="Built for real operations." text="Everything your outbound system needs before it becomes safe enough to run every day." />
-            <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {features.map((feature, index) => (
-                <div key={feature.title} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                  <feature.icon className="size-6" style={{ color: mondayColors[index % mondayColors.length] }} />
-                  <p className="mt-5 font-black text-slate-950">{feature.title}</p>
-                  <p className="mt-2 text-sm font-medium leading-6 text-slate-600">{feature.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-5 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <SectionIntro
-              align="left"
-              eyebrow="Use cases"
-              title="Built for every business that depends on conversations."
-              text="The platform works anywhere prospect research, outreach, follow-ups, and booked calls create revenue."
-            />
-            <div className="grid gap-3 sm:grid-cols-2">
-              {useCases.map((item, index) => (
-                <div key={item} className="flex items-center gap-3 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <CheckCircle2 className="size-5" style={{ color: mondayColors[index % mondayColors.length] }} />
-                  <span className="font-black text-slate-950">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="px-5 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <SectionIntro eyebrow="Benefits" title="Benefits your team feels immediately." text="Less manual busywork, more conversations, better pipeline memory, and a system that never forgets a reply." />
-            <div className="mt-12 grid gap-4 md:grid-cols-5">
-              {benefits.map((benefit, index) => (
-                <div key={benefit.title} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <div className="mb-8 h-2 rounded-full" style={{ backgroundColor: mondayColors[index % mondayColors.length] }} />
-                  <p className="text-lg font-black text-slate-950">{benefit.title}</p>
-                  <p className="mt-3 text-sm font-medium leading-6 text-slate-600">{benefit.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <TestimonialsBlock />
-
-        <PricingBlock />
-
-        <section className="px-5 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <SectionIntro align="left" eyebrow="Responsible automation" title="Guardrails before growth." text="Outbound automation needs controls. GrowthAgent AI is built around human review, suppression checks, audit logs, and reply-aware behavior." />
-            <div className="grid gap-4 sm:grid-cols-2">
-              {securityPoints.map((point, index) => (
-                <div key={point.title} className="flex items-center gap-3 rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <point.icon className="size-5" style={{ color: mondayColors[index % mondayColors.length] }} />
-                  <span className="text-sm font-black text-slate-950">{point.title}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <FAQBlock />
-        <BlogStrip />
-
-        <section className="px-5 py-20 sm:px-6 lg:px-8">
+        <section className="px-5 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <OrbitingAvatarsCTA
-              title="Turn your idea into a sales engine."
-              description="Show the product, explain the agent team, and book serious conversations with companies that need sales automation."
+              title="Ready to show this to a real customer?"
+              description="Book a demo page, explain the agent system, and turn the product into a clearer sales story."
               buttonText="Request Demo"
               avatars={[
                 { label: "CEO", color: "#ffcb00" },

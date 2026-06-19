@@ -84,10 +84,10 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const groups = [
-    { title: "Company", links: [["About", "/about"], ["Contact", "/contact"], ["Book Demo", "/contact"], ["Security", "/#security"]] },
-    { title: "Product", links: [["Lead Research", "/#product"], ["Agents", "/#agents"], ["Pricing", "/pricing"], ["Analytics", "/#showcase"]] },
-    { title: "Resources", links: [["Blog", "/blog"], ["FAQ", "/#faq"], ["Use Cases", "/#use-cases"], ["Demo", "/contact"]] },
-    { title: "Legal", links: [["Privacy", "/privacy"], ["Terms", "/terms"], ["Responsible AI", "/#security"], ["Compliance", "/#security"]] },
+    { title: "Company", links: [["About", "/about"], ["Contact", "/contact"], ["Book Demo", "/demo"], ["Security", "/security"]] },
+    { title: "Product", links: [["Lead Research", "/lead-research"], ["Agents", "/agents"], ["Pricing", "/pricing"], ["Analytics", "/analytics"]] },
+    { title: "Resources", links: [["Blog", "/blog"], ["FAQ", "/faq"], ["Use Cases", "/use-cases"], ["Demo", "/demo"]] },
+    { title: "Legal", links: [["Privacy", "/privacy"], ["Terms", "/terms"], ["Responsible AI", "/responsible-ai"], ["Compliance", "/compliance"]] },
   ];
 
   return (
