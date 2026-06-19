@@ -16,6 +16,7 @@ import { GlowCard } from "@/components/ui/glow-card";
 import { OrbitingAvatarsCTA } from "@/components/ui/orbiting-avatars";
 import { ShinyLink } from "@/components/ui/shiny-button";
 import { TextScramble } from "@/components/ui/text-scramble";
+import { MobileDashboardPreview } from "@/components/mobile-dashboard-preview";
 import { ColorBand, PageShell, Pill, SectionIntro, SparkleBadge } from "@/components/site-chrome";
 import {
   agents,
@@ -89,7 +90,12 @@ export function MarketingHome() {
                 ))}
               </div>
             </motion.div>
-            <DashboardPreview />
+            <div className="lg:hidden">
+              <MobileDashboardPreview />
+            </div>
+            <div className="hidden lg:block">
+              <DashboardPreview />
+            </div>
           </div>
         </section>
 
@@ -151,12 +157,17 @@ export function MarketingHome() {
               title="The command center stays simple."
               text="A clear view of lead research, campaign drafts, reply status, and the actions that need approval."
             />
-            <ContainerScroll
-              className="mt-4 min-h-[34rem] sm:min-h-[42rem]"
-              titleComponent={<Pill tone="green">Live agent workspace preview</Pill>}
-            >
-              <DashboardPreview />
-            </ContainerScroll>
+            <div className="mt-8 lg:hidden">
+              <MobileDashboardPreview className="max-w-md" />
+            </div>
+            <div className="hidden lg:block">
+              <ContainerScroll
+                className="mt-4 min-h-[34rem] sm:min-h-[42rem]"
+                titleComponent={<Pill tone="green">Live agent workspace preview</Pill>}
+              >
+                <DashboardPreview />
+              </ContainerScroll>
+            </div>
           </div>
         </section>
 
