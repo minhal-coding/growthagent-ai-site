@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = "https://growthagent.ai";
+const brandImage = "/brand/growthagent-ai-gradient.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -32,12 +33,24 @@ export const metadata: Metadata = {
     "autonomous sales team",
   ],
   authors: [{ name: "GrowthAgent AI" }],
+  icons: {
+    icon: "/brand/growthagent-ai-logo.png",
+    apple: "/brand/growthagent-ai-logo.png",
+  },
   openGraph: {
     title: "GrowthAgent AI - Your AI-Powered Sales Team",
     description:
       "An autonomous AI sales team for research, enrichment, outreach, replies, follow-ups, meetings, and CRM.",
     url: siteUrl,
     siteName: "GrowthAgent AI",
+    images: [
+      {
+        url: brandImage,
+        width: 1536,
+        height: 1536,
+        alt: "GrowthAgent AI intelligent growth systems logo",
+      },
+    ],
     type: "website",
   },
   twitter: {
@@ -45,6 +58,7 @@ export const metadata: Metadata = {
     title: "GrowthAgent AI - Your AI-Powered Sales Team",
     description:
       "Automate prospect research, personalized outreach, reply tracking, follow-ups, meetings, and CRM operations.",
+    images: [brandImage],
   },
   robots: {
     index: true,
