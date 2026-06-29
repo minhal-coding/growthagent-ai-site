@@ -77,8 +77,8 @@ export function MarketingHome() {
               </div>
               <div className="grid w-full max-w-xl grid-cols-3 gap-2 pt-1 sm:gap-3">
                 {[
-                  ["40", "sample leads", "#6161ff"],
-                  ["9", "agent roles", "#00c875"],
+                  ["10", "sample leads", "#6161ff"],
+                  ["8", "agent roles", "#00c875"],
                   ["1", "control room", "#ffcb00"],
                 ].map(([value, label, color], index) => (
                   <GlowCard key={label} glowColor={index === 0 ? "purple" : index === 1 ? "green" : "orange"} className="min-h-24 p-3 sm:p-4">
